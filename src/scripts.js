@@ -8,4 +8,20 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 
-console.log('This is the JavaScript entry file - your code begins here.');
+// console.log('This is the JavaScript entry file - your code begins here.');
+
+import {fetchCustomerData} from './apiCalls';
+
+
+import {
+
+} from './domUpdates';
+
+// searchBtn.addEventListener('click', searchRoomAvailability);
+
+let customerResponse = [];
+let bookingsArr = [];
+let roomsArr = [];
+
+  customerResponse = Promise.all([fetchCustomerData()])
+  debugger
