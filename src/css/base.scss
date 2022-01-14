@@ -3,4 +3,18 @@
 
 body {
   background: $primary-background;
+  font-family: $font;
+  // background-image: url("../images/tree.jpg");
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
