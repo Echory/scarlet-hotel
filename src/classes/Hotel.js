@@ -5,3 +5,5 @@ class Hotel {
     this.roomsAvailable = [];
   }
 }
+
+export default Hotel;
