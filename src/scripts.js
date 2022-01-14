@@ -10,6 +10,7 @@ import './images/turing-logo.png'
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 import Customer from './classes/Customer';
+import Booking from './classes/Booking';
 import {fetchCustomerData, fetchBookingData, fetchRoomData} from './apiCalls';
 
 
@@ -19,17 +20,17 @@ import {
 
 // searchBtn.addEventListener('click', searchRoomAvailability);
 
-let customers = [];
-let bookingsResponse = [];
+let bookings = [];
 let roomsResponse = [];
 let currentCustomer;
 
 async function fetchData() {
-  const customersResponse = await fetchCustomerData()
-  customers = customersResponse.customers
-  currentCustomer = new Customer(customers[0])
+  const customerResponse = await fetchCustomerData(1)
+  currentCustomer = new Customer(customerResponse)
   
-  bookingsResponse = await fetchBookingData()
+  let bookingsResponse = await fetchBookingData()
+  bookings = bookingsResponse.bookings.map(data => new Booking(data))
+  
   roomsResponse = await fetchRoomData()
   debugger
 }

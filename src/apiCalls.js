@@ -1,5 +1,5 @@
-function fetchCustomerData() {
-  return fetch('http://localhost:3001/api/v1/customers')
+function fetchCustomerData(customerId) {
+  return fetch(`http://localhost:3001/api/v1/customers/${customerId}`)
   .then(response => response.json())
   .catch(err => showError(err));
 }
