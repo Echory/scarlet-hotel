@@ -17,7 +17,6 @@ class Customer {
     this.previousBookings = this.allBookings.filter(booking => booking.date < todaysDate)
 
     this.futureBookings = this.allBookings.filter(booking => booking.date >= todaysDate)
-    debugger
   }
 
   setTotalSpent(rooms) {
