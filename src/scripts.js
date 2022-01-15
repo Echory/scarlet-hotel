@@ -25,15 +25,25 @@ let bookings = [];
 let rooms = [];
 let currentCustomer;
 
-async function fetchData() {
-  const customerResponse = await fetchCustomerData(1)
-  currentCustomer = new Customer(customerResponse)
-  
-  let bookingsResponse = await fetchBookingData()
-  bookings = bookingsResponse.bookings.map(data => new Booking(data))
-
+async function fetchAndSetRoomData() {
   let roomsResponse = await fetchRoomData()
   rooms = roomsResponse.rooms.map(data => new Room(data))
+
 }
 
-fetchData()
+async function fetchAndSetBookingData() {
+  let bookingsResponse = await fetchBookingData()
+  bookings = bookingsResponse.bookings.map(data => new Booking(data))
+}
+
+async function fetchAndSetCustomerData() {
+  const customerResponse = await fetchCustomerData(1)
+  currentCustomer = new Customer(customerResponse)
+
+  currentCustomer.setCustomerBookings(bookings)
+  currentCustomer.setTotalSpent(rooms)
+}
+
+fetchAndSetRoomData()
+fetchAndSetBookingData()
+fetchAndSetCustomerData()
