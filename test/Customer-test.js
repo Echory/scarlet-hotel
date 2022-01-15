@@ -1,9 +1,10 @@
 import {expect} from 'chai';
 import Booking from '../src/classes/Booking';
 import Customer from '../src/classes/Customer';
+import Room from '../src/classes/Room';
 
 describe.only('Customer', function() {
-  let bookings, myCustomer;
+  let bookings, rooms, myCustomer;
 
   beforeEach(() => {
     myCustomer = new Customer({
@@ -34,6 +35,33 @@ describe.only('Customer', function() {
       roomServiceCharges: []
     })
    ]
+
+   rooms = [
+    new Room({
+      number: 12,
+      roomType: "single room",
+      bidet: false,
+      bedSize: "twin",
+      numBeds: 2,
+      costPerNight: 172.09
+    }),
+    new Room({
+      number: 20,
+      roomType: "residential suite",
+      bidet: false,
+      bedSize: "queen",
+      numBeds: 1,
+      costPerNight: 343.95
+    }),
+    new Room({
+      number: 13,
+      roomType: "single room",
+      bidet: false,
+      bedSize: "queen",
+      numBeds: 2,
+      costPerNight: 423.92
+    })
+   ]
     
   })
   it('should be a function', function() {
@@ -46,6 +74,23 @@ describe.only('Customer', function() {
 
   it('should find matching booking ids', function() {
     myCustomer.setCustomerBookings(bookings);
-    expect(myCustomer.bookings.length).to.equal(2)
+    expect(myCustomer.allBookings.length).to.equal(2)
+  })
+
+  it('should find all previous bookings', function() {
+    myCustomer.setCustomerBookings(bookings);
+    expect(myCustomer.previousBookings.length).to.equal(0);
+  })
+
+  it('should find all future bookings', function() {
+    myCustomer.setCustomerBookings(bookings);
+    expect(myCustomer.futureBookings.length).to.equal(2);
+  })
+
+  it('should calculate total amount spent', function() {
+    myCustomer.setCustomerBookings(bookings);
+
+    myCustomer.setTotalSpent(rooms);
+    expect(myCustomer.totalSpent).to.deep.equal(516.04)
   })
 })

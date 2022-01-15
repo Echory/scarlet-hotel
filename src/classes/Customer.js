@@ -1,28 +1,32 @@
 class Customer {
   constructor(customer) {
-    this.id = customer.id
+    this.id = customer.id;
     this.name = customer.name;
-    this.bookings = [];
+    this.allBookings = [];
+    this.previousBookings = [];
+    this.futureBookings = [];
     this.totalSpent = 0;
   }
 
-  //takes in array of bookings and finds all of the ones that user is assigned to and then pushes is to customer bookings
-
   setCustomerBookings(bookings) {
-    this.bookings = bookings.filter(booking => booking.userId === this.id)
+    this.allBookings = bookings.filter(booking => booking.userId === this.id)
+    
+    let todaysDate = new Date();
+    todaysDate = todaysDate.toISOString().split('T')[0]
+
+    this.previousBookings = this.allBookings.filter(booking => booking.date < todaysDate)
+
+    this.futureBookings = this.allBookings.filter(booking => booking.date >= todaysDate)
+    debugger
   }
 
   setTotalSpent(rooms) {
-    const roomsBooked = this.bookings.map(booking => booking.roomNumber)
+    const roomsBooked = this.allBookings.map(booking => booking.roomNumber)
 
     roomsBooked.forEach(roomBooked => {
       const foundRoom = rooms.find(room => room.roomNumber === roomBooked)
       this.totalSpent += foundRoom.costPerNight
     });
-  }
-
-  splitPastAndFutureBookings() {
-
   }
 }
 
