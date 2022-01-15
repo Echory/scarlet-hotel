@@ -32,3 +32,23 @@ header {
   border: 2px solid black;
 }
 
+.profile-page {
+  @include flexbox(row, normal, nowrap, center, normal);
+}
+
+.future-trips {
+  border: 2px solid black;
+  height: 80vh;
+  width: 80vh;
+  margin-right: 30px;
+}
+
+.past-trips {
+  border: 2px solid black;
+  height: 80vh;
+  width: 60vh;
+}
+
+.hidden {
+  display: none;
+}
