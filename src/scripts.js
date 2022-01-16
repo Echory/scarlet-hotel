@@ -16,7 +16,8 @@ import {fetchCustomerData, fetchBookingData, fetchRoomData} from './apiCalls';
 
 
 import {
-  showFutureTrips
+  showFutureTrips,
+  showPastTrips
 } from './domUpdates';
 
 // searchBtn.addEventListener('click', searchRoomAvailability);
@@ -43,7 +44,7 @@ async function fetchAndSetCustomerData() {
   currentCustomer.setCustomerBookings(bookings)
   currentCustomer.setTotalSpent(rooms)
   showFutureTrips(currentCustomer)
-
+  showPastTrips(currentCustomer)
 }
 
 fetchAndSetRoomData()

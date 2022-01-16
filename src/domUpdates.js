@@ -19,7 +19,19 @@ function showFutureTrips(currentCustomer) {
   })
 }
 
+function showPastTrips(currentCustomer) {
+  pastTrips.innerHTML = '';
+  currentCustomer.previousBookings.forEach(booking => {
+    return pastTrips.innerHTML += `
+    <article>
+    <p>Room Number: ${booking.roomNumber}</p>
+    </article>
+    `
+  })
+}
+
 
 export {
-  showFutureTrips
+  showFutureTrips,
+  showPastTrips
 }
