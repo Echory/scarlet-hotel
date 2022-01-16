@@ -5,6 +5,7 @@ class Booking {
     this.date = booking.date;
     this.roomNumber = booking.roomNumber;
     this.roomServiceCharges = booking.roomServiceCharges;
+    
   }
 }
 

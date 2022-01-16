@@ -1,13 +1,22 @@
 // import '../src/images/drink-icon.png';
-// import {
-
-// } from './scripts';
 
 
 // const searchRooms = document.getElementById('searchBtn');
 const futureTrips = document.getElementById('futureTrips');
 const pastTrips = document.getElementById('pastTrips');
-const totalCost = document.getElementById('totalCostArea');
+// const totalCost = document.getElementById('totalCostArea');
+const bookATrip = document.getElementById('bookTripBtn');
+const bookingPage = document.getElementById('bookingPage');
+const profilePage = document.getElementById('profilePage');
+
+
+function show(element) {
+  element.classList.remove("hidden");
+}
+
+function hide(element) {
+  element.classList.add("hidden");
+}
 
 function showFutureTrips(currentCustomer) {
   currentCustomer.futureBookings.forEach(booking => {
@@ -37,9 +46,16 @@ function showTotalSpent(currentCustomer) {
     `
 }
 
+function goToBookingPage() {
+show(bookingPage)
+hide(profilePage)
+}
+
 
 export {
   showFutureTrips,
   showPastTrips,
-  showTotalSpent
+  showTotalSpent,
+  bookATrip,
+  goToBookingPage
 }
