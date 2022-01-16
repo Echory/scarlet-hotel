@@ -25,6 +25,8 @@ header {
   font-size: 15px;
 }
 
+
+// BOOKING SECTION
 .booking-section {
   @include flexbox(column, normal, nowrap, normal, center);
   margin: 70px 340px 0 340px;
@@ -32,6 +34,7 @@ header {
   border: 2px solid black;
 }
 
+// PROFILE PAGE
 .profile-page {
   @include flexbox(row, normal, nowrap, center, normal);
 }
@@ -41,6 +44,7 @@ header {
   height: 80vh;
   width: 90vh;
   margin: 30px 30px 0 0;
+  overflow: scroll;
 }
 
 .past-trips {
@@ -48,8 +52,20 @@ header {
   height: 80vh;
   width: 60vh;
   margin-top: 30px;
+  overflow: scroll;
 }
+
+.future-trip-card {
+  margin: 10px;
+}
+
+.total-cost-area {
+  font-size: 30px;
+  text-align: center;
+}
+
 
 .hidden {
   display: none;
 }
+
