@@ -6,6 +6,7 @@ const futureTrips = document.getElementById('futureTrips');
 const pastTrips = document.getElementById('pastTrips');
 // const totalCost = document.getElementById('totalCostArea');
 const bookATrip = document.getElementById('bookTripBtn');
+const profileBtn = document.getElementById('profileBtn');
 const bookingPage = document.getElementById('bookingPage');
 const profilePage = document.getElementById('profilePage');
 
@@ -51,11 +52,18 @@ show(bookingPage)
 hide(profilePage)
 }
 
+function goToProfilePage() {
+  hide(bookingPage)
+  show(profilePage)
+}
+
 
 export {
   showFutureTrips,
   showPastTrips,
   showTotalSpent,
   bookATrip,
-  goToBookingPage
+  goToBookingPage,
+  goToProfilePage,
+  profileBtn
 }

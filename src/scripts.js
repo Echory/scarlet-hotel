@@ -20,7 +20,9 @@ import {
   showPastTrips,
   showTotalSpent,
   bookATrip,
-  goToBookingPage
+  goToBookingPage,
+  goToProfilePage,
+  profileBtn
 } from './domUpdates';
 
 // searchBtn.addEventListener('click', searchRoomAvailability);
@@ -52,6 +54,8 @@ async function fetchAndSetCustomerData() {
 }
 
 bookATrip.addEventListener('click', goToBookingPage);
+
+profileBtn.addEventListener('click', goToProfilePage);
 
 fetchAndSetRoomData()
 fetchAndSetBookingData()
