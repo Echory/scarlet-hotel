@@ -3,7 +3,7 @@ import Booking from '../src/classes/Booking';
 import Customer from '../src/classes/Customer';
 import Room from '../src/classes/Room';
 
-describe.only('Customer', function() {
+describe('Customer', function() {
   let bookings, rooms, myCustomer;
 
   beforeEach(() => {
