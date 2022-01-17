@@ -25,7 +25,8 @@ import {
   goToProfilePage,
   profileBtn,
   searchBtn,
-  displayAvailability
+  displayAvailability,
+  bookRoomBtn
 } from './domUpdates';
 
 // searchBtn.addEventListener('click', searchRoomAvailability);
@@ -61,10 +62,22 @@ async function setData() {
   setCustomerData()
 }
 
+function bookARoom() {
+  let selectedDate = document.getElementById('datePicker');
+  let formatDate = dayjs(selectedDate.value).format('YYYY/MM/DD');
+  let selectedRoom = document.querySelector('input[name="bookRoomRadioBtn"]:checked')
+  hotel.formatBookingInfo(currentCustomer, formatDate, selectedRoom)
+  setData()
+  //get selected room 
+  //call hotel.formatBookingInfo
+  //call post function and pass through hotel.newBookingInfo
+}
+
 setData()
 
 bookATrip.addEventListener('click', goToBookingPage);
 profileBtn.addEventListener('click', goToProfilePage);
+bookRoomBtn.addEventListener('click', bookARoom);
 searchBtn.addEventListener('click', () => {
   displayAvailability(hotel)
 });

@@ -24,10 +24,8 @@ const postBooking = (booking) => {
           'Content-Type': 'application/json'
       }
       })
-      // .then(response => errorHanding1(response))
-      // .catch(err => {
-      //     errorHandingLine.innerText = `You would love to have you stay with us. Please try again.` 
-      // } );
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
 }
 
 

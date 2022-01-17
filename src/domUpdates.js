@@ -14,6 +14,7 @@ const datePicker = document.getElementById('datePicker');
 const availableRoomsSection = document.getElementById('availableRoomsSection');
 const roomTypeFilter = document.getElementById('roomFilter');
 const singleCheckbox = document.getElementById('single')
+const bookRoomBtn = document.getElementById('bookRoomBtn');
 
 function show(element) {
   element.classList.remove("hidden");
@@ -68,7 +69,7 @@ function displayAvailability(hotel) {
  const availableRooms = hotel.getRoomsByTypeAndDate(datePicked, roomSelected)
  availableRooms.forEach(room => {
    return availableRoomsSection.innerHTML += `
-   <input type="radio" class="book-room-radio-btn"> 
+   <input type="radio" class="book-room-radio-btn" value="${room.roomNumber}" name="bookRoomRadioBtn"> 
    <label>Room Type: ${room.roomType} | Cost Per Night: $${room.costPerNight}</label>
    `
  })
@@ -84,5 +85,6 @@ export {
   goToProfilePage,
   profileBtn,
   searchBtn,
-  displayAvailability
+  displayAvailability,
+  bookRoomBtn
 }
