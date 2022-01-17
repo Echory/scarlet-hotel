@@ -12,13 +12,21 @@ import './images/turing-logo.png'
 import Customer from './classes/Customer';
 import Booking from './classes/Booking';
 import Room from './classes/Room';
-import {fetchCustomerData, fetchBookingData, fetchRoomData} from './apiCalls';
+import Hotel from './classes/Hotel';
+import {fetchCustomerData, fetchBookingData, fetchRoomData, postBooking} from './apiCalls';
 
 
 import {
   showFutureTrips,
   showPastTrips,
-  showTotalSpent
+  showTotalSpent,
+  bookATrip,
+  goToBookingPage,
+  goToProfilePage,
+  profileBtn,
+  searchBtn,
+  displayAvailability,
+  bookRoomBtn
 } from './domUpdates';
 
 // searchBtn.addEventListener('click', searchRoomAvailability);
@@ -26,22 +34,12 @@ import {
 let bookings = [];
 let rooms = [];
 let currentCustomer;
+let hotel;
 
-async function fetchAndSetRoomData() {
-  let roomsResponse = await fetchRoomData()
-  rooms = roomsResponse.rooms.map(data => new Room(data))
-
-}
-
-async function fetchAndSetBookingData() {
-  let bookingsResponse = await fetchBookingData()
-  bookings = bookingsResponse.bookings.map(data => new Booking(data))
-}
-
-async function fetchAndSetCustomerData() {
+async function setCustomerData() {
   const customerResponse = await fetchCustomerData(1)
   currentCustomer = new Customer(customerResponse)
-
+  
   currentCustomer.setCustomerBookings(bookings)
   currentCustomer.setTotalSpent(rooms)
   showFutureTrips(currentCustomer)
@@ -49,6 +47,43 @@ async function fetchAndSetCustomerData() {
   showTotalSpent(currentCustomer)
 }
 
-fetchAndSetRoomData()
-fetchAndSetBookingData()
-fetchAndSetCustomerData()
+ async function setHotelData() {
+  let roomsResponse = await fetchRoomData()
+  rooms = roomsResponse.rooms.map(data => new Room(data))
+
+  let bookingsResponse = await fetchBookingData()
+  bookings = bookingsResponse.bookings.map(data => new Booking(data))
+
+  hotel = new Hotel(rooms, bookings)
+}
+
+async function setData() {
+  await setHotelData()
+  setCustomerData()
+}
+
+function bookARoom() {
+  let selectedDate = document.getElementById('datePicker');
+  let formatDate = selectedDate.value.split('-').join('/');
+  let selectedRoom = document.querySelector('input[name="bookRoomRadioBtn"]:checked')
+  let selectedRoomNumber = selectedRoom.getAttribute('value')
+  hotel.formatBookingInfo(currentCustomer, formatDate, selectedRoomNumber)
+  postBooking(hotel.newBookingInfo)
+  setData()
+  //get selected room 
+  //call hotel.formatBookingInfo
+  //call post function and pass through hotel.newBookingInfo
+}
+
+setData()
+
+bookATrip.addEventListener('click', goToBookingPage);
+profileBtn.addEventListener('click', goToProfilePage);
+bookRoomBtn.addEventListener('click', bookARoom);
+searchBtn.addEventListener('click', () => {
+  displayAvailability(hotel)
+});
+
+
+
+

@@ -34,6 +34,10 @@ header {
   border: 2px solid black;
 }
 
+.book-room-radio-btn {
+  @include flexbox(column, normal, nowrap, normal, normal);
+}
+
 // PROFILE PAGE
 .profile-page {
   @include flexbox(row, normal, nowrap, center, normal);

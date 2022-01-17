@@ -1,13 +1,29 @@
 // import '../src/images/drink-icon.png';
-// import {
-
-// } from './scripts';
 
 
 // const searchRooms = document.getElementById('searchBtn');
 const futureTrips = document.getElementById('futureTrips');
 const pastTrips = document.getElementById('pastTrips');
-const totalCost = document.getElementById('totalCostArea');
+// const totalCost = document.getElementById('totalCostArea');
+const bookATrip = document.getElementById('bookTripBtn');
+const profileBtn = document.getElementById('profileBtn');
+const bookingPage = document.getElementById('bookingPage');
+const profilePage = document.getElementById('profilePage');
+const searchBtn = document.getElementById('searchBtn');
+const datePicker = document.getElementById('datePicker');
+const availableRoomsSection = document.getElementById('availableRoomsSection');
+const roomTypeFilter = document.getElementById('roomFilter');
+const singleCheckbox = document.getElementById('single');
+const bookRoomBtn = document.getElementById('bookRoomBtn');
+const noBookingsMsg = document.getElementById('noBookings');
+
+function show(element) {
+  element.classList.remove("hidden");
+}
+
+function hide(element) {
+  element.classList.add("hidden");
+}
 
 function showFutureTrips(currentCustomer) {
   currentCustomer.futureBookings.forEach(booking => {
@@ -37,9 +53,45 @@ function showTotalSpent(currentCustomer) {
     `
 }
 
+function goToBookingPage() {
+  show(bookingPage)
+  hide(profilePage)
+}
+
+function goToProfilePage() {
+  hide(bookingPage)
+  show(profilePage)
+}
+
+function displayAvailability(hotel) {
+ show(bookRoomBtn)
+ let datePicked = datePicker.value.split('-').join('/');
+ let roomSelected = document.querySelector('input[name="room"]:checked').value;
+ availableRoomsSection.innerHTML = ''
+ const availableRooms = hotel.getRoomsByTypeAndDate(datePicked, roomSelected)
+ if(hotel.roomsAvailable.length === 0) {
+   show(noBookingsMsg)
+ } else {
+ availableRooms.forEach(room => {
+   return availableRoomsSection.innerHTML += `
+   <input type="radio" class="book-room-radio-btn" id="${room.roomNumber}" value="${room.roomNumber}" name="bookRoomRadioBtn"> 
+   <label>Room Type: ${room.roomType} | Cost Per Night: $${room.costPerNight}</label>
+   `
+ })
+ }
+}
+
+
 
 export {
   showFutureTrips,
   showPastTrips,
-  showTotalSpent
+  showTotalSpent,
+  bookATrip,
+  goToBookingPage,
+  goToProfilePage,
+  profileBtn,
+  searchBtn,
+  displayAvailability,
+  bookRoomBtn
 }
