@@ -19,6 +19,12 @@ class Hotel {
       return 'Oh no! We are sorry, there are no rooms available for this date! Please select a new date and try again.'
     }
   }
+
+  getRoomsByTypeAndDate(date, type) {
+    this.getAvailableRooms(date);
+    let roomsByType = this.roomsAvailable.filter(room => room.roomType === type);
+    return this.roomsAvailable = roomsByType;
+  }
 }
 
 export default Hotel;

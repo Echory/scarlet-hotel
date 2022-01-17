@@ -16,4 +16,19 @@ function fetchBookingData() {
   .catch(err => showError(err));
 }
 
-export{fetchCustomerData, fetchBookingData, fetchRoomData}
+const postBooking = (booking) => {
+  return fetch('http://localhost:3001/api/v1/bookings', {
+      method: 'POST',
+      body: JSON.stringify(booking),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+      })
+      // .then(response => errorHanding1(response))
+      // .catch(err => {
+      //     errorHandingLine.innerText = `You would love to have you stay with us. Please try again.` 
+      // } );
+}
+
+
+export{fetchCustomerData, fetchBookingData, fetchRoomData, postBooking}

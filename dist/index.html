@@ -29,22 +29,28 @@
         <h4>Select Your Dates:
           <input type="date" class="date-picker" id="datePicker">
         </h4>
-        <div>
-          <input type="checkbox" id="single" name="single">
-          <label for="single">Single Room</label>
-        </div>
-        <div>
-          <input type="checkbox" id="suite" name="suite">
-          <label for="suite">Suite</label>
-        </div>
-        <div>
-          <input type="checkbox" id="junior" name="junior">
-          <label for="junior">Junior Suite</label>
-        </div>
-        <div>
-          <input type="checkbox" id="residential" name="residential">
-          <label for="residential">Residential Suite</label>
-        </div>
+        <section class="room-filters" id="roomFilters">
+          <!-- <div>
+            <input type="radio" id="allRooms" name="room" value="all rooms" checked>
+            <label for="single">All Rooms</label>
+          </div> -->
+          <div>
+            <input type="radio" id="single" name="room" value="single room" checked>
+            <label for="single">Single Room</label>
+          </div>
+          <div>
+            <input type="radio" id="suite" name="room" value="suite">
+            <label for="suite">Suite</label>
+          </div>
+          <div>
+            <input type="radio" id="junior" name="room" value="junior suite">
+            <label for="junior">Junior Suite</label>
+          </div>
+          <div>
+            <input type="radio" id="residential" name="room" value="residential suite">
+            <label for="residential">Residential Suite</label>
+          </div>
+      </section>
         <button class="search-btn" id="searchBtn">Search</button>
       </section>
       <article class="available-rooms" id="availableRoomsSection">
