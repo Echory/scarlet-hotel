@@ -12,6 +12,7 @@ import './images/turing-logo.png'
 import Customer from './classes/Customer';
 import Booking from './classes/Booking';
 import Room from './classes/Room';
+import Hotel from './classes/Hotel';
 import {fetchCustomerData, fetchBookingData, fetchRoomData} from './apiCalls';
 
 
@@ -22,7 +23,9 @@ import {
   bookATrip,
   goToBookingPage,
   goToProfilePage,
-  profileBtn
+  profileBtn,
+  searchBtn,
+  displayAvailability
 } from './domUpdates';
 
 // searchBtn.addEventListener('click', searchRoomAvailability);
@@ -30,22 +33,12 @@ import {
 let bookings = [];
 let rooms = [];
 let currentCustomer;
+let hotel;
 
-async function fetchAndSetRoomData() {
-  let roomsResponse = await fetchRoomData()
-  rooms = roomsResponse.rooms.map(data => new Room(data))
-
-}
-
-async function fetchAndSetBookingData() {
-  let bookingsResponse = await fetchBookingData()
-  bookings = bookingsResponse.bookings.map(data => new Booking(data))
-}
-
-async function fetchAndSetCustomerData() {
+async function setCustomerData() {
   const customerResponse = await fetchCustomerData(1)
   currentCustomer = new Customer(customerResponse)
-
+  
   currentCustomer.setCustomerBookings(bookings)
   currentCustomer.setTotalSpent(rooms)
   showFutureTrips(currentCustomer)
@@ -53,10 +46,29 @@ async function fetchAndSetCustomerData() {
   showTotalSpent(currentCustomer)
 }
 
+ async function setHotelData() {
+  let roomsResponse = await fetchRoomData()
+  rooms = roomsResponse.rooms.map(data => new Room(data))
+
+  let bookingsResponse = await fetchBookingData()
+  bookings = bookingsResponse.bookings.map(data => new Booking(data))
+
+  hotel = new Hotel(rooms, bookings)
+}
+
+async function setData() {
+  await setHotelData()
+  setCustomerData()
+}
+
+setData()
+
 bookATrip.addEventListener('click', goToBookingPage);
-
 profileBtn.addEventListener('click', goToProfilePage);
+searchBtn.addEventListener('click', () => {
+  displayAvailability(hotel)
+});
 
-fetchAndSetRoomData()
-fetchAndSetBookingData()
-fetchAndSetCustomerData()
+
+
+

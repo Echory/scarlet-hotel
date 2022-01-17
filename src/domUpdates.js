@@ -9,7 +9,9 @@ const bookATrip = document.getElementById('bookTripBtn');
 const profileBtn = document.getElementById('profileBtn');
 const bookingPage = document.getElementById('bookingPage');
 const profilePage = document.getElementById('profilePage');
-
+const searchBtn = document.getElementById('searchBtn');
+const datePicker = document.getElementById('datePicker');
+const availableRoomsSection = document.getElementById('availableRoomsSection');
 
 function show(element) {
   element.classList.remove("hidden");
@@ -48,13 +50,25 @@ function showTotalSpent(currentCustomer) {
 }
 
 function goToBookingPage() {
-show(bookingPage)
-hide(profilePage)
+  show(bookingPage)
+  hide(profilePage)
 }
 
 function goToProfilePage() {
   hide(bookingPage)
   show(profilePage)
+}
+
+function displayAvailability(hotel) {
+ let datePicked = datePicker.value.split('-').join('/');
+ const availableRooms = hotel.getAvailableRooms(datePicked)
+ availableRooms.forEach(room => {
+   return availableRoomsSection.innerHTML += `
+   <p>Room Type:${room.roomType} Cost Per Night: $${room.costPerNight}</p>
+   `
+ })
+//  availableRoomsSection.innerHTML = '';
+ 
 }
 
 
@@ -65,5 +79,7 @@ export {
   bookATrip,
   goToBookingPage,
   goToProfilePage,
-  profileBtn
+  profileBtn,
+  searchBtn,
+  displayAvailability
 }

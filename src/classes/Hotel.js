@@ -8,10 +8,10 @@ class Hotel {
   getAvailableRooms(date) {
     const bookingsDateAndRoom = this.bookings.filter(booking => {
       return booking.date === date
-    }).filter(booking => booking.roomNumber)
+    }).map(booking => booking.roomNumber)
 
     this.roomsAvailable = this.rooms.filter(room =>
-        !bookingsDateAndRoom.includes(room.number))
+        !bookingsDateAndRoom.includes(room.roomNumber))
 
     if(this.roomsAvailable.length > 0) {
       return this.roomsAvailable;
