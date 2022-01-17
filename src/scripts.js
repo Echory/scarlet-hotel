@@ -13,7 +13,7 @@ import Customer from './classes/Customer';
 import Booking from './classes/Booking';
 import Room from './classes/Room';
 import Hotel from './classes/Hotel';
-import {fetchCustomerData, fetchBookingData, fetchRoomData} from './apiCalls';
+import {fetchCustomerData, fetchBookingData, fetchRoomData, postBooking} from './apiCalls';
 
 
 import {
@@ -64,9 +64,11 @@ async function setData() {
 
 function bookARoom() {
   let selectedDate = document.getElementById('datePicker');
-  let formatDate = dayjs(selectedDate.value).format('YYYY/MM/DD');
+  let formatDate = selectedDate.value.split('-').join('/');
   let selectedRoom = document.querySelector('input[name="bookRoomRadioBtn"]:checked')
-  hotel.formatBookingInfo(currentCustomer, formatDate, selectedRoom)
+  let selectedRoomNumber = selectedRoom.getAttribute('value')
+  hotel.formatBookingInfo(currentCustomer, formatDate, selectedRoomNumber)
+  postBooking(hotel.newBookingInfo)
   setData()
   //get selected room 
   //call hotel.formatBookingInfo

@@ -63,16 +63,23 @@ function goToProfilePage() {
 }
 
 function displayAvailability(hotel) {
+ show(bookRoomBtn)
  let datePicked = datePicker.value.split('-').join('/');
  let roomSelected = document.querySelector('input[name="room"]:checked').value;
  availableRoomsSection.innerHTML = ''
  const availableRooms = hotel.getRoomsByTypeAndDate(datePicked, roomSelected)
  availableRooms.forEach(room => {
    return availableRoomsSection.innerHTML += `
-   <input type="radio" class="book-room-radio-btn" value="${room.roomNumber}" name="bookRoomRadioBtn"> 
+   <input type="radio" class="book-room-radio-btn" id="${room.roomNumber}" value="${room.roomNumber}" name="bookRoomRadioBtn"> 
    <label>Room Type: ${room.roomType} | Cost Per Night: $${room.costPerNight}</label>
    `
  })
+}
+
+function displayErrorMessage() {
+  if(hotel.roomsAvailable.length === 0) {
+    return 'Oh no! We are sorry, there are no rooms available for this date! Please select a new date and try again.'
+  }
 }
 
 
