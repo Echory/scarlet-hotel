@@ -1,4 +1,4 @@
-// import '../src/images/drink-icon.png';
+import './images/drink-icon.png';
 
 
 // const searchRooms = document.getElementById('searchBtn');
