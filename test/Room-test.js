@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import Customer from '../src/classes/Customer';
 import Room from '../src/classes/Room';
 
-describe.only('Room', function() {
+describe('Room', function() {
   let customer;
   let room = new Room({"number": 12,
   "roomType": "single room",
