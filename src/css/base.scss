@@ -25,6 +25,11 @@ header {
   font-size: 15px;
 }
 
+//LOGIN PAGE
+.login-page {
+  @include flexbox(column, normal, nowrap, normal, center);
+}
+
 
 // BOOKING SECTION
 .booking-section {

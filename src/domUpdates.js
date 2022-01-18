@@ -16,6 +16,8 @@ const roomTypeFilter = document.getElementById('roomFilter');
 const singleCheckbox = document.getElementById('single');
 const bookRoomBtn = document.getElementById('bookRoomBtn');
 const noBookingsMsg = document.getElementById('noBookings');
+const logoutBtn = document.getElementById('logoutBtn');
+const loginPage = document.getElementById('loginPage');
 
 function show(element) {
   element.classList.remove("hidden");
@@ -81,6 +83,12 @@ function displayAvailability(hotel) {
  }
 }
 
+function logOut() {
+  hide(profilePage)
+  hide(bookingPage)
+  show(loginPage)
+}
+
 
 
 export {
@@ -93,5 +101,7 @@ export {
   profileBtn,
   searchBtn,
   displayAvailability,
-  bookRoomBtn
+  bookRoomBtn,
+  logoutBtn,
+  logOut
 }

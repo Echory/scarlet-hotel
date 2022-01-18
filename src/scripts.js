@@ -27,7 +27,9 @@ import {
   profileBtn,
   searchBtn,
   displayAvailability,
-  bookRoomBtn
+  bookRoomBtn,
+  logoutBtn,
+  logOut
 } from './domUpdates';
 
 // searchBtn.addEventListener('click', searchRoomAvailability);
@@ -81,6 +83,7 @@ setData()
 bookATrip.addEventListener('click', goToBookingPage);
 profileBtn.addEventListener('click', goToProfilePage);
 bookRoomBtn.addEventListener('click', bookARoom);
+logoutBtn.addEventListener('click', logOut)
 searchBtn.addEventListener('click', () => {
   displayAvailability(hotel)
 });
