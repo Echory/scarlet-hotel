@@ -6,7 +6,7 @@ import Booking from '../src/classes/Booking';
 
 
 
-describe.only('Hotel', function() {
+describe('Hotel', function() {
   let rooms, bookings;
   let customer = new Customer({
     id: 1,
@@ -88,7 +88,7 @@ describe.only('Hotel', function() {
 
   it('should find available rooms', function() {
     hotel.getAvailableRooms("2022/01/25")
-    expect(hotel.roomsAvailable.length).to.equal(3)
+    expect(hotel.roomsAvailable.length).to.equal(2)
   })
 
   it('should get rooms by room type', function() {
