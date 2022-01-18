@@ -1,17 +1,11 @@
 import {expect} from 'chai';
-import Customer from '../src/classes/Customer';
 import Hotel from '../src/classes/Hotel';
 import Room from '../src/classes/Room';
 import Booking from '../src/classes/Booking';
 
 
-
-describe.only('Hotel', function() {
+describe('Hotel', function() {
   let rooms, bookings;
-  let customer = new Customer({
-    id: 1,
-    name: "Leatha Ullrich"
-  })
 
   rooms = [
     new Room({
@@ -86,16 +80,38 @@ describe.only('Hotel', function() {
     expect(hotel).to.be.an.instanceOf(Hotel);
   })
 
+  it('should have a rooms property', function() {
+    expect(hotel.rooms).to.equal(rooms)
+  })
+
+  it('should have a bookings property', function() {
+    expect(hotel.bookings).to.equal(bookings)
+  })
+
+  it('should have a rooms available property set to an empty array', function() {
+    expect(hotel.roomsAvailable.length).to.equal(0)
+  })
+
   it('should find available rooms', function() {
     hotel.getAvailableRooms("2022/01/25")
-    expect(hotel.roomsAvailable.length).to.equal(3)
+    expect(hotel.roomsAvailable.length).to.equal(2)
   })
 
   it('should get rooms by room type', function() {
-    
+    hotel.getRoomsByTypeAndDate("2022/01/25", 'residential suite')
+    expect(hotel.roomsAvailable.length).to.equal(1)
   })
+
   it('should create an object to book a room', function() {
-    
+    const bookingTest = new Booking({
+      id: "5fwrgu4i7k55hl6th",
+      userID: 19,
+      date: "2022/02/26",
+      roomNumber: 15,
+      roomServiceCharges: []
+    })
+
+    hotel.formatBookingInfo(bookingTest.userId, bookingTest.date, bookingTest.roomNumber)
+    expect(hotel.newBookingInfo).to.deep.equal({userID: 19, date: "2022/02/26", roomNumber: 15 })
   })
- 
 })

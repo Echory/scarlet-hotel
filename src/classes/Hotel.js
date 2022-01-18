@@ -1,4 +1,3 @@
-import Customer from "./Customer";
 
 class Hotel {
   constructor(rooms, bookings) {
@@ -25,7 +24,7 @@ class Hotel {
 
   formatBookingInfo(userID, date, roomNumber) {
     const newBooking = {
-      userID: userID.id,
+      userID: userID,
       date: date,
       roomNumber: Number(roomNumber)
     }

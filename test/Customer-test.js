@@ -72,6 +72,30 @@ describe('Customer', function() {
     expect(myCustomer).to.be.an.instanceOf(Customer);
   })
 
+  it('should have an id', function() {
+    expect(myCustomer.id).to.equal(1)
+  })
+
+  it('should have a name', function() {
+    expect(myCustomer.name).to.equal("Leatha Ullrich")
+  })
+
+  it('should have an array of all bookings', function() {
+    expect(bookings.length).to.equal(3)
+  })
+
+  it('should have a previous bookings array', function() {
+    expect(myCustomer.previousBookings.length).to.equal(0)
+  })
+
+  it('should have a future bookings array', function() {
+    expect(myCustomer.futureBookings.length).to.equal(0)
+  })
+
+  it('should have total spent start at 0', function() {
+    expect(myCustomer.totalSpent).to.deep.equal(0)
+  })
+
   it('should find matching booking ids', function() {
     myCustomer.setCustomerBookings(bookings);
     expect(myCustomer.allBookings.length).to.equal(2)
