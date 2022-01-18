@@ -16,6 +16,11 @@ const roomTypeFilter = document.getElementById('roomFilter');
 const singleCheckbox = document.getElementById('single');
 const bookRoomBtn = document.getElementById('bookRoomBtn');
 const noBookingsMsg = document.getElementById('noBookings');
+const logoutBtn = document.getElementById('logoutBtn');
+const loginPage = document.getElementById('loginPage');
+const loginButton = document.getElementById('loginBtn');
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
 
 function show(element) {
   element.classList.remove("hidden");
@@ -48,6 +53,7 @@ function showPastTrips(currentCustomer) {
 }
 
 function showTotalSpent(currentCustomer) {
+  totalCostArea.innerHTML = ''
   totalCostArea.innerHTML += `
     <p>Total Spent: $${currentCustomer.totalSpent.toFixed(2)}</p>
     `
@@ -81,6 +87,22 @@ function displayAvailability(hotel) {
  }
 }
 
+function clearInputs() {
+  usernameInput.value = '';
+  passwordInput.value = '';
+}
+
+function logOut() {
+  hide(profilePage)
+  hide(bookingPage)
+  show(loginPage)
+}
+
+function logIn() {
+  show(profilePage)
+  hide(loginPage)
+}
+
 
 
 export {
@@ -93,5 +115,12 @@ export {
   profileBtn,
   searchBtn,
   displayAvailability,
-  bookRoomBtn
+  bookRoomBtn,
+  logoutBtn,
+  logOut,
+  loginButton,
+  usernameInput,
+  passwordInput,
+  logIn,
+  clearInputs
 }
