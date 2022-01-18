@@ -30,6 +30,11 @@ header {
   @include flexbox(column, normal, nowrap, normal, center);
 }
 
+.login-form {
+  margin-top: 40px;
+  padding: 15px;
+}
+
 
 // BOOKING SECTION
 .booking-section {
