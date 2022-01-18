@@ -9,11 +9,13 @@
 body {
   background: $primary-background;
   font-family: $font;
-  // background-image: url("../images/tree.jpg");
+  background-image: url("../images/pretty-colors.jpg");
+  background-size: cover;
 }
 
 header {
   @include flexbox(row, normal, nowrap, space-between, normal);
+  color: white;
 }
 
 .header-btn {
@@ -23,6 +25,7 @@ header {
   margin: 10px;
   cursor: pointer;
   font-size: 15px;
+  color: white;
 }
 
 .martini-glass {
@@ -39,6 +42,16 @@ header {
 .login-form {
   margin-top: 40px;
   padding: 15px;
+  color: white;
+}
+
+.login-btn {
+  width: 70px;
+  height: 20px;
+  border: 2px solid white;
+  cursor: pointer;
+  color: white;
+  background: none;
 }
 
 
@@ -47,7 +60,8 @@ header {
   @include flexbox(column, normal, nowrap, normal, center);
   margin: 70px 340px 0 340px;
   padding: 60px 0 60px 0;
-  border: thick double black;
+  border: thick double $darkpink;
+  background-color: $second-background;
 }
 
 .book-room-radio-btn {
@@ -60,7 +74,7 @@ header {
 }
 
 .future-trips {
-  border: thick double black;
+  border: thick double $darkpink;
   height: 80vh;
   width: 90vh;
   margin: 30px 30px 0 0;
@@ -69,7 +83,7 @@ header {
 }
 
 .past-trips {
-  border: thick double black;
+  border: thick double $darkpink;
   height: 80vh;
   width: 60vh;
   margin-top: 30px;
@@ -84,6 +98,7 @@ header {
 .total-cost-area {
   font-size: 30px;
   text-align: center;
+  color: white;
 }
 
 

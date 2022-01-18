@@ -87,12 +87,15 @@ describe.only('Hotel', function() {
   })
 
   it('should find available rooms', function() {
-
     hotel.getAvailableRooms("2022/01/25")
     expect(hotel.roomsAvailable.length).to.equal(3)
   })
 
-  it('should return a sorry message when no rooms are avilable', function() {
+  it('should get rooms by room type', function() {
     
   })
+  it('should create an object to book a room', function() {
+    
+  })
+ 
 })
