@@ -28,10 +28,12 @@
         <input type="password" id="password" name="password" required>
         <input class="login-btn" type="submit" id="loginBtn" value="Login">
       </form>
+      <div class="error-message" id="errorMsg"></div>
     </section>
     <section class="booking-section hidden" id="bookingPage">
       <!-- Booking Page Here -->
-      <section>
+      <p class="thanks-msg hidden" id="thanksMsg">Thanks for booking with us, we cant wait to have you!</p>
+      <section class="booking-box" id="bookingBox">
         <p>Book Your Stay</p>
         <h4>Select Your Dates:
           <input type="date" class="date-picker" id="datePicker">
@@ -62,10 +64,9 @@
       <button class="book-room-btn hidden" id="bookRoomBtn">Book Room</button>
       <p class="no-bookings hidden" id="noBookings">Oh no! We are sorry, there are no rooms available for this date! Please select a new date and try again.</p>
     </section>
-
     <!-- Profile Page Here -->
-   
     <section class="profile-page hidden" id="profilePage">
+      <div class="welcome-customer" id="welcomeCustomer"></div>
       <div class="total-cost-area" id="totalCostArea"> 
       </div>
       <section class="future-trips" id="futureTrips">
@@ -78,9 +79,6 @@
       </section>
     </section>
   </main>
-  
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
 </body>

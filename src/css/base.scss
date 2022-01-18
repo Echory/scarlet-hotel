@@ -1,4 +1,3 @@
-
 @import '_variables';
 @import '_mixins';
 
@@ -31,7 +30,6 @@ header {
 .martini-glass {
   height: 37px;
   width: 45px;
-  // margin-right: 300px;
 }
 
 //LOGIN PAGE
@@ -54,6 +52,9 @@ header {
   background: none;
 }
 
+.error-message {
+  color: white;
+}
 
 // BOOKING SECTION
 .booking-section {
@@ -100,7 +101,6 @@ header {
   text-align: center;
   color: white;
 }
-
 
 .hidden {
   display: none;
