@@ -29,7 +29,11 @@ import {
   displayAvailability,
   bookRoomBtn,
   logoutBtn,
-  logOut
+  logOut,
+  loginButton,
+  usernameInput,
+  passwordInput,
+  logIn
 } from './domUpdates';
 
 // searchBtn.addEventListener('click', searchRoomAvailability);
@@ -38,9 +42,10 @@ let bookings = [];
 let rooms = [];
 let currentCustomer;
 let hotel;
+let customerID;
 
 async function setCustomerData() {
-  const customerResponse = await fetchCustomerData(1)
+  const customerResponse = await fetchCustomerData(customerID)
   currentCustomer = new Customer(customerResponse)
   
   currentCustomer.setCustomerBookings(bookings)
@@ -73,17 +78,29 @@ function bookARoom() {
   hotel.formatBookingInfo(currentCustomer, formatDate, selectedRoomNumber)
   postBooking(hotel.newBookingInfo)
   setData()
-  //get selected room 
-  //call hotel.formatBookingInfo
-  //call post function and pass through hotel.newBookingInfo
 }
 
-setData()
+function logInCustomer(event) {
+  event.preventDefault()
+  let usersname = usernameInput.value
+  let password = passwordInput.value
+  
+  if(usersname.startsWith('customer') && password === 'overlook2021'){
+    customerID = parseInt(usersname.substring(8))  
+    setData(customerID)
+    logIn()
+  }
+}
+
+
 
 bookATrip.addEventListener('click', goToBookingPage);
 profileBtn.addEventListener('click', goToProfilePage);
 bookRoomBtn.addEventListener('click', bookARoom);
-logoutBtn.addEventListener('click', logOut)
+logoutBtn.addEventListener('click', logOut);
+loginButton.addEventListener('click', (e) => {
+  logInCustomer(e);
+})
 searchBtn.addEventListener('click', () => {
   displayAvailability(hotel)
 });

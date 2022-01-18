@@ -18,6 +18,9 @@ const bookRoomBtn = document.getElementById('bookRoomBtn');
 const noBookingsMsg = document.getElementById('noBookings');
 const logoutBtn = document.getElementById('logoutBtn');
 const loginPage = document.getElementById('loginPage');
+const loginButton = document.getElementById('loginBtn');
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
 
 function show(element) {
   element.classList.remove("hidden");
@@ -83,12 +86,18 @@ function displayAvailability(hotel) {
  }
 }
 
+
+
 function logOut() {
   hide(profilePage)
   hide(bookingPage)
   show(loginPage)
 }
 
+function logIn() {
+  show(profilePage)
+  hide(loginPage)
+}
 
 
 export {
@@ -103,5 +112,9 @@ export {
   displayAvailability,
   bookRoomBtn,
   logoutBtn,
-  logOut
+  logOut,
+  loginButton,
+  usernameInput,
+  passwordInput,
+  logIn
 }
