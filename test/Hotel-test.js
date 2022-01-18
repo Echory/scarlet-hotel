@@ -4,7 +4,6 @@ import Room from '../src/classes/Room';
 import Booking from '../src/classes/Booking';
 
 
-
 describe.only('Hotel', function() {
   let rooms, bookings;
 

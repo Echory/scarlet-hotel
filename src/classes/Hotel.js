@@ -1,4 +1,3 @@
-import Customer from "./Customer";
 
 class Hotel {
   constructor(rooms, bookings) {
