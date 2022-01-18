@@ -1,10 +1,5 @@
-import './images/drink-icon.png';
-
-
-// const searchRooms = document.getElementById('searchBtn');
 const futureTrips = document.getElementById('futureTrips');
 const pastTrips = document.getElementById('pastTrips');
-// const totalCost = document.getElementById('totalCostArea');
 const bookATrip = document.getElementById('bookTripBtn');
 const profileBtn = document.getElementById('profileBtn');
 const bookingPage = document.getElementById('bookingPage');
@@ -12,8 +7,6 @@ const profilePage = document.getElementById('profilePage');
 const searchBtn = document.getElementById('searchBtn');
 const datePicker = document.getElementById('datePicker');
 const availableRoomsSection = document.getElementById('availableRoomsSection');
-const roomTypeFilter = document.getElementById('roomFilter');
-const singleCheckbox = document.getElementById('single');
 const bookRoomBtn = document.getElementById('bookRoomBtn');
 const noBookingsMsg = document.getElementById('noBookings');
 const logoutBtn = document.getElementById('logoutBtn');
@@ -21,6 +14,8 @@ const loginPage = document.getElementById('loginPage');
 const loginButton = document.getElementById('loginBtn');
 const usernameInput = document.getElementById('username');
 const passwordInput = document.getElementById('password');
+const errorMsg = document.getElementById('errorMsg');
+
 
 function show(element) {
   element.classList.remove("hidden");
@@ -83,8 +78,13 @@ function displayAvailability(hotel) {
    <input type="radio" class="book-room-radio-btn" id="${room.roomNumber}" value="${room.roomNumber}" name="bookRoomRadioBtn"> 
    <label>Room Type: ${room.roomType} | Cost Per Night: $${room.costPerNight}</label>
    `
- })
+  })
  }
+}
+
+function displayError() {
+  errorMsg.innerHTML = ''
+  errorMsg.innerHTML += `<p>Please input correct username and password</p>`
 }
 
 function clearInputs() {
@@ -93,6 +93,7 @@ function clearInputs() {
 }
 
 function logOut() {
+  errorMsg.innerHTML = ''
   hide(profilePage)
   hide(bookingPage)
   show(loginPage)
@@ -102,7 +103,6 @@ function logIn() {
   show(profilePage)
   hide(loginPage)
 }
-
 
 
 export {
@@ -122,5 +122,6 @@ export {
   usernameInput,
   passwordInput,
   logIn,
-  clearInputs
+  clearInputs,
+  displayError
 }
