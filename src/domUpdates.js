@@ -53,6 +53,7 @@ function showPastTrips(currentCustomer) {
 }
 
 function showTotalSpent(currentCustomer) {
+  totalCostArea.innerHTML = ''
   totalCostArea.innerHTML += `
     <p>Total Spent: $${currentCustomer.totalSpent.toFixed(2)}</p>
     `
@@ -86,7 +87,10 @@ function displayAvailability(hotel) {
  }
 }
 
-
+function clearInputs() {
+  usernameInput.value = '';
+  passwordInput.value = '';
+}
 
 function logOut() {
   hide(profilePage)
@@ -98,6 +102,7 @@ function logIn() {
   show(profilePage)
   hide(loginPage)
 }
+
 
 
 export {
@@ -116,5 +121,6 @@ export {
   loginButton,
   usernameInput,
   passwordInput,
-  logIn
+  logIn,
+  clearInputs
 }

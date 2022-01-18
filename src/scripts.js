@@ -33,7 +33,8 @@ import {
   loginButton,
   usernameInput,
   passwordInput,
-  logIn
+  logIn,
+  clearInputs
 } from './domUpdates';
 
 // searchBtn.addEventListener('click', searchRoomAvailability);
@@ -90,6 +91,7 @@ function logInCustomer(event) {
     setData(customerID)
     logIn()
   }
+  clearInputs()
 }
 
 
