@@ -1,5 +1,4 @@
 import './css/base.scss';
-import './images/drink-icon.png'
 
 import Customer from './classes/Customer';
 import Booking from './classes/Booking';

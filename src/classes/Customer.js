@@ -15,7 +15,6 @@ class Customer {
     todaysDate = todaysDate.toISOString().split('T')[0]
 
     this.previousBookings = this.allBookings.filter(booking => booking.date < todaysDate)
-
     this.futureBookings = this.allBookings.filter(booking => booking.date >= todaysDate)
   }
 
