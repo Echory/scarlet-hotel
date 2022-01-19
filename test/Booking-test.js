@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import Booking from '../src/classes/Booking';
 
-describe.only('Booking', function() {
+describe('Booking', function() {
   let booking1, booking2;
   beforeEach(() => {
     booking1 = new Booking({

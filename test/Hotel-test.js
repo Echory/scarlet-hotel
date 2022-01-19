@@ -101,17 +101,4 @@ describe('Hotel', function() {
     hotel.getRoomsByTypeAndDate("2022/01/25", 'residential suite')
     expect(hotel.roomsAvailable.length).to.equal(1)
   })
-
-  it('should create an object to book a room', function() {
-    const bookingTest = new Booking({
-      id: "5fwrgu4i7k55hl6th",
-      userID: 19,
-      date: "2022/02/26",
-      roomNumber: 15,
-      roomServiceCharges: []
-    })
-
-    hotel.formatBookingInfo(bookingTest.userId, bookingTest.date, bookingTest.roomNumber)
-    expect(hotel.newBookingInfo).to.deep.equal({userID: 19, date: "2022/02/26", roomNumber: 15 })
-  })
 })
