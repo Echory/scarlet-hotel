@@ -55,6 +55,7 @@ function showTotalSpent(currentCustomer) {
 }
 
 function goToBookingPage() {
+  availableRoomsSection.innerHTML = ''
   show(bookingPage)
   hide(profilePage)
 }
@@ -62,6 +63,7 @@ function goToBookingPage() {
 function goToProfilePage() {
   hide(bookingPage)
   show(profilePage)
+  hide(bookRoomBtn)
 }
 
 function displayAvailability(hotel) {
@@ -76,7 +78,7 @@ function displayAvailability(hotel) {
  availableRooms.forEach(room => {
    return availableRoomsSection.innerHTML += `
    <input type="radio" class="book-room-radio-btn" id="${room.roomNumber}" value="${room.roomNumber}" name="bookRoomRadioBtn"> 
-   <label>Room Type: ${room.roomType} | Cost Per Night: $${room.costPerNight}</label>
+   <label>Room Type: ${room.roomType}| Room #: ${room.roomNumber}| Cost Per Night: $${room.costPerNight}</label>
    `
   })
  }

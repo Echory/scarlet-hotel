@@ -24,7 +24,7 @@ class Hotel {
 
   formatBookingInfo(userID, date, roomNumber) {
     const newBooking = {
-      userID: userID,
+      userID: userID.id,
       date: date,
       roomNumber: Number(roomNumber)
     }
