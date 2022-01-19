@@ -58,6 +58,7 @@ function goToBookingPage() {
   availableRoomsSection.innerHTML = ''
   show(bookingPage)
   hide(profilePage)
+  hide(noBookingsMsg)
 }
 
 function goToProfilePage() {
