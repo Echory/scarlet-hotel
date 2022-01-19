@@ -36,3 +36,6 @@
 
 ## Contributors
 - [Emma Chory](https://github.com/Echory)
+
+Find project spec [here](https://frontend.turing.edu/projects/overlook.html)
+
